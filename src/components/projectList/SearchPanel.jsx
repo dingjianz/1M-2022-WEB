@@ -17,24 +17,6 @@ const SearchPanel = ({ param, setParam }) => {
     }));
   };
 
-  const getUsers = async () => {
-    try {
-      const res = await fetch("");
-      console.log('res:::', res);
-      if (res.ok) {
-        const r = await res.json()
-        console.log(r)
-        setList(r)
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  useEffect(() => {
-    getUsers()
-  }, [param]);
-
   return (
     <form action="">
       <div>
