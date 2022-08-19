@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import List from "../../components/projectList/List";
 import SearchPanel from "../../components/projectList/SearchPanel";
+import{ useDebounce } from '../../utils'
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -11,6 +12,8 @@ const ProjectListPages = () => {
   });
   const [list, setList] = useState([]);
   const [users, setUsers] = useState([]);
+  
+  const debounceParam = useDebounce(param, 500) // 防抖 hook形式
 
   const getProjects = async () => {
     try {
@@ -50,7 +53,7 @@ const ProjectListPages = () => {
   useEffect(() => {
     getProjects();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [param]);
+  }, [debounceParam]);
 
   useEffect(() => {
     getUsers();
