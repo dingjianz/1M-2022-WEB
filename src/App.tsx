@@ -1,5 +1,10 @@
-import React from 'react';
+import React from "react";
+import ProjectList from "./pages/projectList";
 
-const App = () => <h1>app</h1>
+const App = () => (
+  <div>
+    <ProjectList />
+  </div>
+);
 
-export default App
+export default App;

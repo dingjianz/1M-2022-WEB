@@ -1,18 +1,22 @@
-const List = ({ list }) => {
-  return <table>
-    <thead>
-      <th>名称</th>
-      <th>名称负责人</th>
-    </thead>
-    <tbody>
-      {
-        list?.map(item => <tr key={item?.name}>
-          <td>{ item?.name }</td>
-          <td>{ item.personName }</td>
-        </tr>)
-      }
-    </tbody>
-  </table>
-}
+const List = ({ list, users }) => {
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>名称</th>
+          <th>负责人</th>
+        </tr>
+      </thead>
+      <tbody>
+        {list?.map((project) => (
+          <tr key={project?.id}>
+            <td>{project?.name}</td>
+            <td>{users.find((user) => user.id === project?.personId)?.name}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
 
-export default List
+export default List;
