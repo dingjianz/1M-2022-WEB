@@ -1,30 +1,21 @@
-import { FC } from 'react'
-
-type User = {
-  name: string,
-  id: number | string
-}
+import { Dispatch, FC, SetStateAction } from "react";
 
 interface IProps {
-  users: User[];
-  param: {
-    name: string;
-    personId: string;
-  };
-  setParam: (param: IProps["param"]) => void;
+  users: ITodo.IUser[];
+  param: ITodo.IParam;
+  setParam: Dispatch<SetStateAction<ITodo.IParam>>;
 }
 
 const SearchPanel: FC<IProps> = ({ param, setParam, users }) => {
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setParam((preParam: IProps["param"]) => ({
+    setParam((preParam: ITodo.IParam) => ({
       ...preParam,
       name: e.target.value,
     }));
   };
 
-  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setParam((preParam: IProps["param"]) => ({
+  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    setParam((preParam) => ({
       ...preParam,
       personId: Number(e.target.value),
     }));
@@ -39,10 +30,6 @@ const SearchPanel: FC<IProps> = ({ param, setParam, users }) => {
           type="text"
           value={param.name}
           onChange={handleChange}
-          // onChange={evt => setParam({
-          //   ...param,
-          //   name: evt.target.value
-          // })}
         />
         <select value={param.personId} onChange={handleSelect}>
           {users.map((user) => (

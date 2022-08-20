@@ -1,4 +1,10 @@
-const List = ({ list, users }) => {
+import { FC } from "react";
+interface IProps {
+  users: ITodo.IUser[];
+  list: ITodo.IProject[];
+}
+
+const List: FC<IProps> = ({ list, users }) => {
   return (
     <table>
       <thead>

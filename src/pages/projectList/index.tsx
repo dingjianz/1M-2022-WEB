@@ -6,7 +6,7 @@ import{ useDebounce } from '../../utils'
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const ProjectListPages = () => {
-  const [param, setParam] = useState({
+  const [param, setParam] = useState<ITodo.IParam>({
     name: "",
     personId: "",
   });
@@ -23,7 +23,7 @@ const ProjectListPages = () => {
         searchParams.append("name", param?.name);
       }
       if (param?.personId) {
-        searchParams.append("personId", param?.personId);
+        searchParams.append("personId", param?.personId as string);
       }
       if (searchParams.toString()) {
         url = `${url}?${searchParams.toString()}`;
