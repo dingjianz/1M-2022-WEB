@@ -2,6 +2,7 @@ declare namespace ITodo {
   interface IUser {
     name: string;
     id: number | string;
+    token?: string
   }
 
   interface IProject {
